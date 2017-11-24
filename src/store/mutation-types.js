@@ -1,0 +1,5 @@
+export const GAME_STOP = 'GAME_STOP'
+export const GAME_START = 'GAME_START'
+export const ROUND_START = 'ROUND_START'
+export const ROUND_COMPLETE = 'ROUND_COMPLETE'
+export const BATTLE_NEXT_PHASE = 'BATTLE_NEXT_PHASE'
