@@ -1,7 +1,6 @@
 <template>
   <div class="screen">
 
-    <h2>{{enemies}}</h2>
     <div class="screen__enemies">
       <Entity v-for="e in enemies" type="enemy" v-bind:key="e.id" v-bind:info="e" >{{e.name}}</Entity>
     </div>
@@ -40,5 +39,9 @@
   .screen {
     flex-grow: 2;
     background: #9cff8c;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
   }
 </style>

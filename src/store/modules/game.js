@@ -69,11 +69,8 @@ const actions = {
 
     commit(types.BATTLE_NEXT_PHASE, move);
 
-    console.log("HERO STATUS", state.hero.status);
-
     if (state.hero.status == CONSTANTS.ENTITY_STATUS_DEAD) {
       commit(types.GAME_END);
-      // setTimeout(() => dispatch('gameEnd'), 0);
       return;
     }
 
@@ -137,7 +134,7 @@ const mutations = {
         }
 
         if (move && move == CONSTANTS.MOVE_FIREBOLT) {
-          let damage = state.hero.getAttack() / 3;
+          let damage = Math.floor(state.hero.getAttack() / 3);
           for (let e of state.enemies) {
             e.doDamage(damage);
           }

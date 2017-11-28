@@ -82,7 +82,7 @@
 
   .status-bar__status {
     width: 30%;
-    background: grey;
+    background: #cccccc;
     display: flex;
     flex-direction: column;
   }

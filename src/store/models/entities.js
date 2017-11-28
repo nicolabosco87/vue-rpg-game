@@ -47,7 +47,7 @@ export class Demon extends Entity {
 
 export class Hero extends Entity {
   constructor() {
-    super(10);
+    super(100);
     this.name = 'Hero';
   }
 }
