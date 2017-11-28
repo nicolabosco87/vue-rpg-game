@@ -6,13 +6,13 @@
     </div>
 
     <div class="status-bar__actions">
-      <button @click="" v-bind:disabled="!heroTurn">Fight</button>
-      <button v-bind:disabled="!heroTurn" >Firebolt</button>
+      <button @click="actionFight" v-bind:disabled="!heroTurn || !gameOnGoing">Attack</button>
+      <button @click="actionFirebolt" v-bind:disabled="!heroTurn || !gameOnGoing" >Firebolt</button>
     </div>
 
     <div class="status-bar__status">
       <h3>Status</h3>
-      Level: {{heroStatus.level}}
+      Level: {{heroInfo.level}}
       <br>
       life: {{heroLifePerc}}%
     </div>
@@ -21,16 +21,27 @@
 </template>
 
 <script>
-  import {mapGetters} from "vuex";
+  import {mapActions, mapGetters} from "vuex";
+  import * as CONSTANTS from '../constants'
+
   export default {
     name: 'StatusBar',
     computed: {
-      ...mapGetters(['heroStatus', 'heroLifePerc', 'heroTurn', 'battlePhaseLabel']),
+      ...mapGetters(['heroInfo', 'heroLifePerc', 'heroTurn', 'battlePhaseLabel', 'gameOnGoing']),
+    },
+    data: () => {
+      return {
+        CONSTANTS: CONSTANTS,
+      }
     },
     methods: {
-      ...mapActions(['']),
+      ...mapActions(['battlePhase']),
       actionFight() {
+          this.battlePhase(CONSTANTS.MOVE_ATTACK)
+      },
 
+      actionFirebolt() {
+        this.battlePhase(CONSTANTS.MOVE_FIREBOLT)
       }
     }
   };

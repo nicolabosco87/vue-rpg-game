@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:class="{ entity: true, entityHero: type == 'h'}">
+  <div v-bind:class="{ entity: true, entityHero: type == 'hero'}">
     <h3>{{info.name}}</h3>
   </div>
 </template>
@@ -23,7 +23,7 @@
     padding: 30px 20px;
 
 
-    &.entity-hero {
+    &.entityHero {
       border: 3px solid green;
       background: forestgreen;
     }

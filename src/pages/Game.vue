@@ -2,7 +2,7 @@
   <div class="layout">
     <div v-if="!isGameActive"  >
       <h2></h2>
-      <button v-on:click="gameStart" >Start game</button>
+      <button @click="gameStart" >Start game</button>
     </div>
     <div v-if="isGameActive" class="layout">
       <Screen></Screen>
@@ -23,7 +23,7 @@ export default {
   computed: {
     ...mapGetters(['gameState']),
     isGameActive() {
-      return (this.gameState == CONSTANTS.GAME_STATUS_ONGOING)
+      return (this.gameState == CONSTANTS.GAME_STATUS_ONGOING || this.gameState == CONSTANTS.GAME_STATUS_END)
     }
   },
   methods: {

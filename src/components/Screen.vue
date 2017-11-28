@@ -6,10 +6,10 @@
       <Entity v-for="e in enemies" type="enemy" v-bind:key="e.id" v-bind:info="e" >{{e.name}}</Entity>
     </div>
     <div class="screen__interaction">
-      <h2 v-if="battlePhase == CONSTANTS.BATTLE_PHASE_TURN_HERO_START">It's your turn. Choose the action.</h2>
-      <h2 v-if="battlePhase == CONSTANTS.BATTLE_PHASE_TURN_HERO_END"></h2>
-      <h2 v-if="battlePhase == CONSTANTS.BATTLE_PHASE_TURN_ENEMY_START">It's enemy turn</h2>
-      <h2 v-if="battlePhase == CONSTANTS.BATTLE_PHASE_TURN_ENEMY_END">Enemy've done damage</h2>
+      <Messages></Messages>
+    </div>
+    <div class="screen__hero">
+      <Entity v-bind:info="heroInfo" type="hero" ></Entity>
     </div>
 
   </div>
@@ -18,13 +18,19 @@
 <script>
   import {mapGetters} from "vuex";
   import Entity from "./Entity.vue";
+  import Messages from "./Messages.vue";
   import * as CONSTANTS from '../constants'
 
   export default {
     name: 'Screen',
-    components: { Entity },
+    components: { Entity, Messages },
+    data: () => {
+      return {
+        CONSTANTS: CONSTANTS,
+      }
+    },
     computed: {
-      ...mapGetters(['enemies', 'battlePhase']),
+      ...mapGetters(['heroInfo', 'enemies', 'battlePhase', 'gameOnGoing']),
     }
   };
 </script>

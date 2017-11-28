@@ -12,12 +12,21 @@ export class Entity {
   }
 
   getAttack() {
-    return this.baseAttack + this.baseAttack * Math.floor(liv / 3);
+    return this.baseAttack + this.baseAttack * Math.floor(this.level / 3);
   }
 
   isAlive() {
     return this.hp > 0;
   }
+
+  doDamage(damage = 0) {
+    this.hp-= damage;
+
+    if (this.hp <= 0) {
+      this.status = CONSTANTS.ENTITY_STATUS_DEAD;
+    }
+  }
+
 }
 
 export class Troll extends Entity {
@@ -38,7 +47,7 @@ export class Demon extends Entity {
 
 export class Hero extends Entity {
   constructor() {
-    super(100);
+    super(10);
     this.name = 'Hero';
   }
 }
